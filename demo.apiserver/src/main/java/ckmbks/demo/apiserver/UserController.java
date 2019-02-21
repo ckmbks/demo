@@ -4,6 +4,7 @@ import ckmbks.demo.domain.user.dto.UserDto;
 import ckmbks.demo.domain.user.dto.UserLoginTokenDto;
 import ckmbks.framework.query.PageData;
 import ckmbks.demo.service.UserService;
+import ckmbks.framework.query.QueryParams;
 import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +36,7 @@ public class UserController extends BaseApiController {
 
     @RequestMapping(value = "/user/getPage", method = {RequestMethod.GET, RequestMethod.POST})
     public PageData<UserDto> getPage() {
-        return  userService.getPage();
+        return  userService.getPage(new QueryParams().fill());
     }
 
 }

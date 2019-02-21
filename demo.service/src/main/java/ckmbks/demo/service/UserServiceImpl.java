@@ -6,9 +6,13 @@ import ckmbks.demo.domain.user.dto.UserDto;
 import ckmbks.demo.domain.user.dto.UserLoginTokenDto;
 import ckmbks.demo.domain.user.repository.UserLoginTokenRepository;
 import ckmbks.demo.domain.user.repository.UserRepository;
+import ckmbks.framework.db.Database;
 import ckmbks.framework.exception.AlertException;
+import ckmbks.framework.lang.Func;
+import ckmbks.framework.lang.Func1;
 import ckmbks.framework.query.PageData;
 import ckmbks.demo.dataaccess.UserDtoMapper;
+import ckmbks.framework.query.QueryParams;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import lombok.var;
@@ -16,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.MessageFormat;
+import java.util.regex.Matcher;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -53,15 +58,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public PageData<UserDto> getPage() {
-       var pageInfo = PageHelper.startPage(1, 10).doSelectPageInfo(() -> UserDtoMapper.getPage());
-        PageHelper.startPage(1, 10);
-//紧跟着的第一个select方法会被分页
-        var list = UserDtoMapper.getPage();
+    public PageData<UserDto> getPage(QueryParams params) {
+        var list = UserDtoMapper.getPage(params);
 
 //分页时，实际返回的结果list类型是Page<E>，如果想取出分页信息，需要强制转换为Page<E>
-        ;
-        return new PageData(list,((Page) list).getTotal());
+//        return new PageData(list,((Page) list).getTotal());
+
 //        RowBounds rowBounds = new RowBounds(offset, limit);
 //        var list = UserDtoMapper.getClassName(filters,rowBounds);
 ////包装为PageInfo对象

@@ -5,6 +5,7 @@ import ckmbks.demo.domain.user.User;
 import ckmbks.demo.domain.user.dto.UserDto;
 import ckmbks.demo.domain.user.dto.UserLoginTokenDto;
 import ckmbks.framework.query.PageData;
+import ckmbks.framework.query.QueryParams;
 
 public interface UserService {
 
@@ -24,6 +25,6 @@ public interface UserService {
 
     User getByToken(String token);
 
-    PageData<UserDto> getPage();
+    PageData<UserDto> getPage(QueryParams params);
 
 }

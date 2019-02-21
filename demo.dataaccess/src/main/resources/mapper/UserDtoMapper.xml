@@ -4,6 +4,13 @@
     <select id="getPage" resultType="ckmbks.demo.domain.user.dto.UserDto">
         select *
         from user
+        <where>
+            <if test="userName != null">
+                userName like #{userName}
+            </if>
+            <if test="title != null">
+                AND phone = #{phone}
+            </if>
+        </where>
     </select>
-
 </mapper>
