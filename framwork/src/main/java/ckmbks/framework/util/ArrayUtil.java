@@ -13,8 +13,6 @@ import ckmbks.framework.collection.IterUtil;
 import ckmbks.framework.exceptions.UtilException;
 import ckmbks.framework.lang.Editor;
 import ckmbks.framework.lang.Filter;
-import ckmbks.framework.util.ObjectUtil;
-import ckmbks.framework.util.StrUtil;
 
 /**
  * 数组工具类
@@ -1782,7 +1780,7 @@ public class ArrayUtil {
 				}
 			}
 		}
-		throw new UtilException(ckmbks.framework.util.StrUtil.format("[{}] is not Array!", obj.getClass()));
+		throw new UtilException(ckmbks.framework.util.StrUtil.templateFormat("[{}] is not Array!", obj.getClass()));
 	}
 
 	/**
@@ -2289,7 +2287,7 @@ public class ArrayUtil {
 				return join((Object[]) array, conjunction);
 			}
 		}
-		throw new UtilException(StrUtil.format("[{}] is not a Array!", array.getClass()));
+		throw new UtilException(StrUtil.templateFormat("[{}] is not a Array!", array.getClass()));
 	}
 
 	/**

@@ -24,9 +24,6 @@ import ckmbks.framework.io.FastByteArrayOutputStream;
 import ckmbks.framework.io.FileUtil;
 import ckmbks.framework.io.IORuntimeException;
 import ckmbks.framework.io.IoUtil;
-import ckmbks.framework.util.ArrayUtil;
-import ckmbks.framework.util.CharsetUtil;
-import ckmbks.framework.util.StrUtil;
 
 /**
  * 压缩工具类
@@ -868,7 +865,7 @@ public class ZipUtil {
 				continue;
 			}
 			if (false == srcFile.exists()) {
-				throw new UtilException(StrUtil.format("File [{}] not exist!", srcFile.getAbsolutePath()));
+				throw new UtilException(StrUtil.templateFormat("File [{}] not exist!", srcFile.getAbsolutePath()));
 			}
 
 			try {

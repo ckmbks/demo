@@ -16,8 +16,6 @@ import java.util.Map.Entry;
 import ckmbks.framework.io.FileUtil;
 import ckmbks.framework.io.IORuntimeException;
 import ckmbks.framework.io.IoUtil;
-import ckmbks.framework.io.file.FileWrapper;
-import ckmbks.framework.io.file.LineSeparator;
 import ckmbks.framework.lang.Assert;
 import ckmbks.framework.util.CharsetUtil;
 import ckmbks.framework.util.StrUtil;
@@ -241,7 +239,7 @@ public class FileWriter extends FileWrapper {
 		try(PrintWriter writer  = getPrintWriter(isAppend)) {
 			for (Entry<?, ?> entry : map.entrySet()) {
 				if (null != entry) {
-					writer.print(StrUtil.format("{}{}{}", entry.getKey(), kvSeparator, entry.getValue()));
+					writer.print(StrUtil.templateFormat("{}{}{}", entry.getKey(), kvSeparator, entry.getValue()));
 					printNewLine(writer, lineSeparator);
 					writer.flush();
 				}

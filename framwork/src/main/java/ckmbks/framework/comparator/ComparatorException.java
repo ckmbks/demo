@@ -19,7 +19,7 @@ public class ComparatorException extends RuntimeException{
 	}
 	
 	public ComparatorException(String messageTemplate, Object... params) {
-		super(StrUtil.format(messageTemplate, params));
+		super(StrUtil.templateFormat(messageTemplate, params));
 	}
 	
 	public ComparatorException(String message, Throwable throwable) {
@@ -27,6 +27,6 @@ public class ComparatorException extends RuntimeException{
 	}
 	
 	public ComparatorException(Throwable throwable, String messageTemplate, Object... params) {
-		super(StrUtil.format(messageTemplate, params), throwable);
+		super(StrUtil.templateFormat(messageTemplate, params), throwable);
 	}
 }

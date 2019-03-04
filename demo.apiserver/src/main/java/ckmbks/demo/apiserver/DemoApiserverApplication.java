@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication(exclude = {
         org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class
 }, scanBasePackages = "ckmbks.demo")
-@ComponentScan(basePackages = "ckmbks.demo")
+@ComponentScan(basePackages = "ckmbks")
 @EntityScan(basePackages = {"ckmbks.demo"})
 @EnableJpaRepositories(basePackages = {"ckmbks.demo"})
 @MapperScan("ckmbks.demo.dataaccess")

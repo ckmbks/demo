@@ -66,7 +66,7 @@ public class MapConverter extends AbstractConverter<Map<?, ?>> {
 		} else if (BeanUtil.isBean(value.getClass())) {
 			map = BeanUtil.beanToMap(value);
 		} else {
-			throw new UnsupportedOperationException(StrUtil.format("Unsupport toMap value type: {}", value.getClass().getName()));
+			throw new UnsupportedOperationException(StrUtil.templateFormat("Unsupport toMap value type: {}", value.getClass().getName()));
 		}
 		return map;
 	}

@@ -153,7 +153,7 @@ public class BufferUtil {
 			if (charIndex - primitivePosition > maxLength) {
 				//查找到尽头，未找到，还原位置
 				buffer.position(primitivePosition);
-				throw new IndexOutOfBoundsException(StrUtil.format("Position is out of maxLength: {}", maxLength));
+				throw new IndexOutOfBoundsException(StrUtil.templateFormat("Position is out of maxLength: {}", maxLength));
 			}
 		}
 		

@@ -208,7 +208,7 @@ public class FileCopier extends SrcToDestCopier<File, FileCopier>{
 			//目标为不存在路径，创建为目录
 			dest.mkdirs();
 		} else if (false == dest.isDirectory()) {
-			throw new IORuntimeException(StrUtil.format("Src [{}] is a directory but dest [{}] is a file!", src.getPath(), dest.getPath()));
+			throw new IORuntimeException(StrUtil.templateFormat("Src [{}] is a directory but dest [{}] is a file!", src.getPath(), dest.getPath()));
 		}
 		
 		final String files[] = src.list();

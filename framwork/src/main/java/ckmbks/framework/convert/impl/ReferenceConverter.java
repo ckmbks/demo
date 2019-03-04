@@ -49,7 +49,7 @@ public class ReferenceConverter extends AbstractConverter<Reference> {
 			return new SoftReference(targetValue);
 		}
 		
-		throw new UnsupportedOperationException(StrUtil.format("Unsupport Reference type: {}", this.targetType.getName()));
+		throw new UnsupportedOperationException(StrUtil.templateFormat("Unsupport Reference type: {}", this.targetType.getName()));
 	}
 
 }

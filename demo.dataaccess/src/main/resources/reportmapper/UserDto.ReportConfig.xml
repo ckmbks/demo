@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper name="user.getPage" desc="获取人员列表">
+    <reportSql>
+        SELECT
+        *
+        FROM user u
+        @where
+    </reportSql>
+    <totalSql>
+        SELECT COUNT(0)
+        FROM user u
+        @where
+    </totalSql>
+    <orderSql>
+        ORDER BY u.name DESC
+    </orderSql>
+    <paramGroup name="where">
+        <param name="userId">
+            u.id=@userId
+        </param>
+        <param name="sex">
+            find_in_set(sex,@sex)
+        </param>
+        <param name="userName">
+            u.user_name LIKE (%@userName%)
+        </param>
+        <param name="beginTime">
+            u.add_time>=@beginTime
+        </param>
+        <param name="endTime">
+            <![CDATA[
+            u.add_time<=@endTime
+            ]]>
+        </param>
+    </paramGroup>
+</mapper>

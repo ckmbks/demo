@@ -15,7 +15,6 @@ import ckmbks.framework.io.FileUtil;
 import ckmbks.framework.io.IORuntimeException;
 import ckmbks.framework.io.IoUtil;
 import ckmbks.framework.io.LineHandler;
-import ckmbks.framework.io.file.FileWrapper;
 import ckmbks.framework.util.CharsetUtil;
 import ckmbks.framework.util.StrUtil;
 
@@ -123,7 +122,7 @@ public class FileReader extends FileWrapper {
 			in = new FileInputStream(file);
 			readLength = in.read(bytes);
 			if(readLength < len){
-				throw new IOException(StrUtil.format("File length is [{}] but read [{}]!", len, readLength));
+				throw new IOException(StrUtil.templateFormat("File length is [{}] but read [{}]!", len, readLength));
 			}
 		} catch (Exception e) {
 			throw new IORuntimeException(e);

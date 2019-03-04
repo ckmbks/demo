@@ -18,10 +18,6 @@ import ckmbks.framework.convert.Convert;
 import ckmbks.framework.exceptions.UtilException;
 import ckmbks.framework.lang.Editor;
 import ckmbks.framework.lang.Filter;
-import ckmbks.framework.map.CamelCaseLinkedMap;
-import ckmbks.framework.map.CamelCaseMap;
-import ckmbks.framework.map.MapBuilder;
-import ckmbks.framework.map.MapProxy;
 import ckmbks.framework.util.ArrayUtil;
 import ckmbks.framework.util.ObjectUtil;
 import ckmbks.framework.util.ReflectUtil;
@@ -248,7 +244,7 @@ public class MapUtil {
 					}
 				}
 			} else {
-				throw new IllegalArgumentException(StrUtil.format("Array element {}, '{}', is not type of Map.Entry or Array or Iterable or Iterator", i, object));
+				throw new IllegalArgumentException(StrUtil.templateFormat("Array element {}, '{}', is not type of Map.Entry or Array or Iterable or Iterator", i, object));
 			}
 		}
 		return map;

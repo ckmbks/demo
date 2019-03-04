@@ -1,6 +1,5 @@
 package ckmbks.framework.exceptions;
 
-import ckmbks.framework.exceptions.ExceptionUtil;
 import ckmbks.framework.util.StrUtil;
 
 /**
@@ -21,7 +20,7 @@ public class DependencyException extends RuntimeException {
 	}
 
 	public DependencyException(String messageTemplate, Object... params) {
-		super(StrUtil.format(messageTemplate, params));
+		super(StrUtil.templateFormat(messageTemplate, params));
 	}
 
 	public DependencyException(String message, Throwable throwable) {
@@ -29,6 +28,6 @@ public class DependencyException extends RuntimeException {
 	}
 
 	public DependencyException(Throwable throwable, String messageTemplate, Object... params) {
-		super(StrUtil.format(messageTemplate, params), throwable);
+		super(StrUtil.templateFormat(messageTemplate, params), throwable);
 	}
 }

@@ -19,7 +19,7 @@ public class DateException extends RuntimeException{
 	}
 	
 	public DateException(String messageTemplate, Object... params) {
-		super(StrUtil.format(messageTemplate, params));
+		super(StrUtil.templateFormat(messageTemplate, params));
 	}
 	
 	public DateException(String message, Throwable throwable) {
@@ -27,6 +27,6 @@ public class DateException extends RuntimeException{
 	}
 	
 	public DateException(Throwable throwable, String messageTemplate, Object... params) {
-		super(StrUtil.format(messageTemplate, params), throwable);
+		super(StrUtil.templateFormat(messageTemplate, params), throwable);
 	}
 }

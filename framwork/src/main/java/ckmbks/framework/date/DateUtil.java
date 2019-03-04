@@ -10,13 +10,6 @@ import java.util.List;
 
 import ckmbks.framework.collection.CollUtil;
 import ckmbks.framework.convert.Convert;
-import ckmbks.framework.date.*;
-import ckmbks.framework.date.DateTime;
-import ckmbks.framework.date.DateUnit;
-import ckmbks.framework.date.Month;
-import ckmbks.framework.date.Quarter;
-import ckmbks.framework.date.Week;
-import ckmbks.framework.date.Zodiac;
 import ckmbks.framework.date.format.DateParser;
 import ckmbks.framework.date.format.DatePrinter;
 import ckmbks.framework.date.format.FastDateFormat;
@@ -688,7 +681,7 @@ public class DateUtil {
 	 * @since 3.1.1
 	 */
 	public static ckmbks.framework.date.DateTime parseTimeToday(String timeString) {
-		timeString = StrUtil.format("{} {}", today(), timeString);
+		timeString = StrUtil.templateFormat("{} {}", today(), timeString);
 		return parse(timeString, DatePattern.NORM_DATETIME_FORMAT);
 	}
 
@@ -765,7 +758,7 @@ public class DateUtil {
 		}
 
 		// 没有更多匹配的时间格式
-		throw new DateException("No format fit for date String [{}] !", dateStr);
+		throw new DateException("No templateFormat fit for date String [{}] !", dateStr);
 	}
 
 	// ------------------------------------ Parse end ----------------------------------------------
@@ -1488,7 +1481,7 @@ public class DateUtil {
 		cal.setTime(dateToCompare);
 
 		if (cal.before(birthDay)) {
-			throw new IllegalArgumentException(StrUtil.format("Birthday is after date {}!", formatDate(dateToCompare)));
+			throw new IllegalArgumentException(StrUtil.templateFormat("Birthday is after date {}!", formatDate(dateToCompare)));
 		}
 
 		int year = cal.get(Calendar.YEAR);

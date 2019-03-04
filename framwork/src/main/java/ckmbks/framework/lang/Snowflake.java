@@ -69,10 +69,10 @@ public class Snowflake {
 	 */
 	public Snowflake(long workerId, long datacenterId, boolean isUseSystemClock) {
 		if (workerId > maxWorkerId || workerId < 0) {
-			throw new IllegalArgumentException(StrUtil.format("worker Id can't be greater than {} or less than 0", maxWorkerId));
+			throw new IllegalArgumentException(StrUtil.templateFormat("worker Id can't be greater than {} or less than 0", maxWorkerId));
 		}
 		if (datacenterId > maxDatacenterId || datacenterId < 0) {
-			throw new IllegalArgumentException(StrUtil.format("datacenter Id can't be greater than {} or less than 0", maxDatacenterId));
+			throw new IllegalArgumentException(StrUtil.templateFormat("datacenter Id can't be greater than {} or less than 0", maxDatacenterId));
 		}
 		this.workerId = workerId;
 		this.datacenterId = datacenterId;
@@ -88,7 +88,7 @@ public class Snowflake {
 		long timestamp = genTime();
 		if (timestamp < lastTimestamp) {
 			 //如果服务器时间有问题(时钟后退) 报错。
-			throw new IllegalStateException(StrUtil.format("Clock moved backwards. Refusing to generate id for {}ms", lastTimestamp - timestamp));
+			throw new IllegalStateException(StrUtil.templateFormat("Clock moved backwards. Refusing to generate id for {}ms", lastTimestamp - timestamp));
 		}
 		if (lastTimestamp == timestamp) {
 			sequence = (sequence + 1) & sequenceMask;

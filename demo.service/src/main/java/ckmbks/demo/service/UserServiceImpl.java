@@ -10,6 +10,7 @@ import ckmbks.framework.db.Database;
 import ckmbks.framework.exception.AlertException;
 import ckmbks.framework.lang.Func;
 import ckmbks.framework.lang.Func1;
+import ckmbks.framework.query.Db;
 import ckmbks.framework.query.PageData;
 import ckmbks.demo.dataaccess.UserDtoMapper;
 import ckmbks.framework.query.QueryParams;
@@ -32,6 +33,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     public UserDtoMapper UserDtoMapper;
+
+    @Autowired
+    private ckmbks.framework.query.Db Db;
 
     public UserLoginTokenDto login(String userName, String password) {
         var user = UserRepository.findByUserName(userName)
@@ -59,7 +63,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public PageData<UserDto> getPage(QueryParams params) {
-        var list = UserDtoMapper.getPage(params);
+        return Db.getPageData(UserDto.class,"user.getPage", params);
 
 //分页时，实际返回的结果list类型是Page<E>，如果想取出分页信息，需要强制转换为Page<E>
 //        return new PageData(list,((Page) list).getTotal());

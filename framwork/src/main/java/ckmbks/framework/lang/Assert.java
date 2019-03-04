@@ -30,7 +30,7 @@ public class Assert {
 	 */
 	public static void isTrue(boolean expression, String errorMsgTemplate, Object... params) throws IllegalArgumentException {
 		if (false == expression) {
-			throw new IllegalArgumentException(StrUtil.format(errorMsgTemplate, params));
+			throw new IllegalArgumentException(StrUtil.templateFormat(errorMsgTemplate, params));
 		}
 	}
 
@@ -62,7 +62,7 @@ public class Assert {
 	 */
 	public static void isFalse(boolean expression, String errorMsgTemplate, Object... params) throws IllegalArgumentException {
 		if (expression) {
-			throw new IllegalArgumentException(StrUtil.format(errorMsgTemplate, params));
+			throw new IllegalArgumentException(StrUtil.templateFormat(errorMsgTemplate, params));
 		}
 	}
 
@@ -94,7 +94,7 @@ public class Assert {
 	 */
 	public static void isNull(Object object, String errorMsgTemplate, Object... params) throws IllegalArgumentException {
 		if (object != null) {
-			throw new IllegalArgumentException(StrUtil.format(errorMsgTemplate, params));
+			throw new IllegalArgumentException(StrUtil.templateFormat(errorMsgTemplate, params));
 		}
 	}
 
@@ -129,7 +129,7 @@ public class Assert {
 	 */
 	public static <T> T notNull(T object, String errorMsgTemplate, Object... params) throws NullPointerException {
 		if (object == null) {
-			throw new NullPointerException(StrUtil.format(errorMsgTemplate, params));
+			throw new NullPointerException(StrUtil.templateFormat(errorMsgTemplate, params));
 		}
 		return object;
 	}
@@ -167,7 +167,7 @@ public class Assert {
 	 */
 	public static String notEmpty(String text, String errorMsgTemplate, Object... params) throws IllegalArgumentException {
 		if (StrUtil.isEmpty(text)) {
-			throw new IllegalArgumentException(StrUtil.format(errorMsgTemplate, params));
+			throw new IllegalArgumentException(StrUtil.templateFormat(errorMsgTemplate, params));
 		}
 		return text;
 	}
@@ -204,7 +204,7 @@ public class Assert {
 	 */
 	public static String notBlank(String text, String errorMsgTemplate, Object... params) throws IllegalArgumentException {
 		if (StrUtil.isBlank(text)) {
-			throw new IllegalArgumentException(StrUtil.format(errorMsgTemplate, params));
+			throw new IllegalArgumentException(StrUtil.templateFormat(errorMsgTemplate, params));
 		}
 		return text;
 	}
@@ -241,7 +241,7 @@ public class Assert {
 	 */
 	public static String notContain(String textToSearch, String substring, String errorMsgTemplate, Object... params) throws IllegalArgumentException {
 		if (StrUtil.isNotEmpty(textToSearch) && StrUtil.isNotEmpty(substring) && textToSearch.contains(substring)) {
-			throw new IllegalArgumentException(StrUtil.format(errorMsgTemplate, params));
+			throw new IllegalArgumentException(StrUtil.templateFormat(errorMsgTemplate, params));
 		}
 		return substring;
 	}
@@ -277,7 +277,7 @@ public class Assert {
 	 */
 	public static Object[] notEmpty(Object[] array, String errorMsgTemplate, Object... params) throws IllegalArgumentException {
 		if (ArrayUtil.isEmpty(array)) {
-			throw new IllegalArgumentException(StrUtil.format(errorMsgTemplate, params));
+			throw new IllegalArgumentException(StrUtil.templateFormat(errorMsgTemplate, params));
 		}
 		return array;
 	}
@@ -313,7 +313,7 @@ public class Assert {
 	 */
 	public static <T> T[] noNullElements(T[] array, String errorMsgTemplate, Object... params) throws IllegalArgumentException {
 		if (ArrayUtil.hasNull(array)) {
-			throw new IllegalArgumentException(StrUtil.format(errorMsgTemplate, params));
+			throw new IllegalArgumentException(StrUtil.templateFormat(errorMsgTemplate, params));
 		}
 		return array;
 	}
@@ -350,7 +350,7 @@ public class Assert {
 	 */
 	public static <T> Collection<T> notEmpty(Collection<T> collection, String errorMsgTemplate, Object... params) throws IllegalArgumentException {
 		if (CollectionUtil.isEmpty(collection)) {
-			throw new IllegalArgumentException(StrUtil.format(errorMsgTemplate, params));
+			throw new IllegalArgumentException(StrUtil.templateFormat(errorMsgTemplate, params));
 		}
 		return collection;
 	}
@@ -389,7 +389,7 @@ public class Assert {
 	 */
 	public static <K, V> Map<K, V> notEmpty(Map<K, V> map, String errorMsgTemplate, Object... params) throws IllegalArgumentException {
 		if (CollectionUtil.isEmpty(map)) {
-			throw new IllegalArgumentException(StrUtil.format(errorMsgTemplate, params));
+			throw new IllegalArgumentException(StrUtil.templateFormat(errorMsgTemplate, params));
 		}
 		return map;
 	}
@@ -449,7 +449,7 @@ public class Assert {
 	public static <T> T isInstanceOf(Class<?> type, T obj, String errorMsgTemplate, Object... params) throws IllegalArgumentException {
 		notNull(type, "Type to check against must not be null");
 		if (false == type.isInstance(obj)) {
-			throw new IllegalArgumentException(StrUtil.format(errorMsgTemplate, params));
+			throw new IllegalArgumentException(StrUtil.templateFormat(errorMsgTemplate, params));
 		}
 		return obj;
 	}
@@ -485,7 +485,7 @@ public class Assert {
 	public static void isAssignable(Class<?> superType, Class<?> subType, String errorMsgTemplate, Object... params) throws IllegalArgumentException {
 		notNull(superType, "Type to check against must not be null");
 		if (subType == null || !superType.isAssignableFrom(subType)) {
-			throw new IllegalArgumentException(StrUtil.format(errorMsgTemplate, params));
+			throw new IllegalArgumentException(StrUtil.templateFormat(errorMsgTemplate, params));
 		}
 	}
 
@@ -503,7 +503,7 @@ public class Assert {
 	 */
 	public static void state(boolean expression, String errorMsgTemplate, Object... params) throws IllegalStateException {
 		if (false == expression) {
-			throw new IllegalStateException(StrUtil.format(errorMsgTemplate, params));
+			throw new IllegalStateException(StrUtil.templateFormat(errorMsgTemplate, params));
 		}
 	}
 
@@ -573,7 +573,7 @@ public class Assert {
 	 */
 	public static int checkBetween(int value, int min, int max) {
 		if (value < min || value > max) {
-			throw new IllegalArgumentException(StrUtil.format("Length must be between {} and {}.", min, max));
+			throw new IllegalArgumentException(StrUtil.templateFormat("Length must be between {} and {}.", min, max));
 		}
 		return value;
 	}
@@ -589,7 +589,7 @@ public class Assert {
 	 */
 	public static long checkBetween(long value, long min, long max) {
 		if (value < min || value > max) {
-			throw new IllegalArgumentException(StrUtil.format("Length must be between {} and {}.", min, max));
+			throw new IllegalArgumentException(StrUtil.templateFormat("Length must be between {} and {}.", min, max));
 		}
 		return value;
 	}
@@ -605,7 +605,7 @@ public class Assert {
 	 */
 	public static double checkBetween(double value, double min, double max) {
 		if (value < min || value > max) {
-			throw new IllegalArgumentException(StrUtil.format("Length must be between {} and {}.", min, max));
+			throw new IllegalArgumentException(StrUtil.templateFormat("Length must be between {} and {}.", min, max));
 		}
 		return value;
 	}
@@ -627,7 +627,7 @@ public class Assert {
 		double minDouble = min.doubleValue();
 		double maxDouble = max.doubleValue();
 		if (valueDouble < minDouble || valueDouble > maxDouble) {
-			throw new IllegalArgumentException(StrUtil.format("Length must be between {} and {}.", min, max));
+			throw new IllegalArgumentException(StrUtil.templateFormat("Length must be between {} and {}.", min, max));
 		}
 		return value;
 	}
@@ -644,11 +644,11 @@ public class Assert {
 	 */
 	private static String badIndexMsg(int index, int size, String desc, Object... params) {
 		if (index < 0) {
-			return StrUtil.format("{} ({}) must not be negative", StrUtil.format(desc, params), index);
+			return StrUtil.templateFormat("{} ({}) must not be negative", StrUtil.templateFormat(desc, params), index);
 		} else if (size < 0) {
 			throw new IllegalArgumentException("negative size: " + size);
 		} else { // index >= size
-			return StrUtil.format("{} ({}) must be less than size ({})", StrUtil.format(desc, params), index, size);
+			return StrUtil.templateFormat("{} ({}) must be less than size ({})", StrUtil.templateFormat(desc, params), index, size);
 		}
 	}
 	// -------------------------------------------------------------------------------------------------------------------------------------------- Private method end

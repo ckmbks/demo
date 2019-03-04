@@ -7,8 +7,6 @@ import java.util.Map;
 
 import ckmbks.framework.bean.BeanDesc.PropDesc;
 import ckmbks.framework.bean.BeanUtil;
-import ckmbks.framework.bean.copier.CopyOptions;
-import ckmbks.framework.bean.copier.ValueProvider;
 import ckmbks.framework.bean.copier.provider.BeanValueProvider;
 import ckmbks.framework.bean.copier.provider.MapValueProvider;
 import ckmbks.framework.collection.CollUtil;
@@ -180,7 +178,7 @@ public class BeanCopier<T> implements Copier<T> {
 		if (copyOptions.editable != null) {
 			// 检查限制类是否为target的父类或接口
 			if (false == copyOptions.editable.isInstance(bean)) {
-				throw new IllegalArgumentException(StrUtil.format("Target class [{}] not assignable to Editable class [{}]", bean.getClass().getName(), copyOptions.editable.getName()));
+				throw new IllegalArgumentException(StrUtil.templateFormat("Target class [{}] not assignable to Editable class [{}]", bean.getClass().getName(), copyOptions.editable.getName()));
 			}
 			actualEditable = copyOptions.editable;
 		}

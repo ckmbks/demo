@@ -6,5 +6,5 @@ import java.util.List;
 import java.util.Map;
 
 public interface UserDtoMapper {
-    List<UserDto> getPage(Map<String, String> map);
+    List<UserDto> getPage();
 }

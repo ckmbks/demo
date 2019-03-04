@@ -1,20 +1,5 @@
 package ckmbks.framework.util;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.JarURLConnection;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.net.URLDecoder;
-import java.net.URLStreamHandler;
-import java.nio.charset.Charset;
-import java.util.jar.JarFile;
-
 import ckmbks.framework.exceptions.UtilException;
 import ckmbks.framework.io.FileUtil;
 import ckmbks.framework.io.IORuntimeException;
@@ -22,9 +7,11 @@ import ckmbks.framework.io.IoUtil;
 import ckmbks.framework.io.resource.ResourceUtil;
 import ckmbks.framework.lang.Assert;
 import ckmbks.framework.net.URLEncoder;
-import ckmbks.framework.util.CharsetUtil;
-import ckmbks.framework.util.ClassLoaderUtil;
-import ckmbks.framework.util.StrUtil;
+
+import java.io.*;
+import java.net.*;
+import java.nio.charset.Charset;
+import java.util.jar.JarFile;
 
 /**
  * 统一资源定位符相关工具类

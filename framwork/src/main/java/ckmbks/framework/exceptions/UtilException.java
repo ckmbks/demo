@@ -1,6 +1,5 @@
 package ckmbks.framework.exceptions;
 
-import ckmbks.framework.exceptions.ExceptionUtil;
 import ckmbks.framework.util.StrUtil;
 
 /**
@@ -19,7 +18,7 @@ public class UtilException extends RuntimeException{
 	}
 	
 	public UtilException(String messageTemplate, Object... params) {
-		super(StrUtil.format(messageTemplate, params));
+		super(StrUtil.templateFormat(messageTemplate, params));
 	}
 	
 	public UtilException(String message, Throwable throwable) {
@@ -27,6 +26,6 @@ public class UtilException extends RuntimeException{
 	}
 	
 	public UtilException(Throwable throwable, String messageTemplate, Object... params) {
-		super(StrUtil.format(messageTemplate, params), throwable);
+		super(StrUtil.templateFormat(messageTemplate, params), throwable);
 	}
 }

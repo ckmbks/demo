@@ -38,7 +38,7 @@ public interface DateParser extends DateBasic {
 	 * 根据给定格式转换日期字符串
 	 * Updates the Calendar with parsed fields. Upon success, the ParsePosition index is updated to indicate how much of the source text was consumed. 
 	 * Not all source text needs to be consumed. 
-	 * Upon parse failure, ParsePosition error index is updated to the offset of the source text which does not match the supplied format.
+	 * Upon parse failure, ParsePosition error index is updated to the offset of the source text which does not match the supplied templateFormat.
 	 *
 	 * @param source 被转换的日期字符串
 	 * @param pos 定义开始转换的位置，转换结束后更新转换到的位置

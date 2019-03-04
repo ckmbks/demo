@@ -96,7 +96,7 @@ public class DateConverter extends AbstractConverter<Date> {
 			return new java.sql.Timestamp(mills);
 		}
 
-		throw new UnsupportedOperationException(StrUtil.format("Unsupport Date type: {}", this.targetType.getName()));
+		throw new UnsupportedOperationException(StrUtil.templateFormat("Unsupport Date type: {}", this.targetType.getName()));
 	}
 
 }

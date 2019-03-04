@@ -21,7 +21,7 @@ public class JSONException extends RuntimeException {
 	}
 	
 	public JSONException(String messageTemplate, Object... params) {
-		super(StrUtil.format(messageTemplate, params));
+		super(StrUtil.templateFormat(messageTemplate, params));
 	}
 
 	public JSONException(String message, Throwable cause) {
@@ -29,6 +29,6 @@ public class JSONException extends RuntimeException {
 	}
 
 	public JSONException(Throwable throwable, String messageTemplate, Object... params) {
-		super(StrUtil.format(messageTemplate, params), throwable);
+		super(StrUtil.templateFormat(messageTemplate, params), throwable);
 	}
 }

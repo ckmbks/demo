@@ -120,7 +120,7 @@ class FastDateParser extends AbstractDateBasic implements DateParser {
 		}
 	}
 
-	// helper classes to parse the format string
+	// helper classes to parse the templateFormat string
 	// -----------------------------------------------------------------------
 
 	/**
@@ -146,7 +146,7 @@ class FastDateParser extends AbstractDateBasic implements DateParser {
 	}
 
 	/**
-	 * Parse format into Strategies
+	 * Parse templateFormat into Strategies
 	 */
 	private class StrategyParser {
 		final private Calendar definingCalendar;
@@ -784,7 +784,7 @@ class FastDateParser extends AbstractDateBasic implements DateParser {
 		 * Factory method for ISO8601TimeZoneStrategies.
 		 * 
 		 * @param tokenLen a token indicating the length of the TimeZone String to be formatted.
-		 * @return a ISO8601TimeZoneStrategy that can format TimeZone String of length {@code tokenLen}. If no such strategy exists, an IllegalArgumentException will be thrown.
+		 * @return a ISO8601TimeZoneStrategy that can templateFormat TimeZone String of length {@code tokenLen}. If no such strategy exists, an IllegalArgumentException will be thrown.
 		 */
 		static Strategy getStrategy(final int tokenLen) {
 			switch (tokenLen) {

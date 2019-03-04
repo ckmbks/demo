@@ -1,6 +1,5 @@
 package ckmbks.framework.exceptions;
 
-import ckmbks.framework.exceptions.StatefulException;
 import ckmbks.framework.util.StrUtil;
 
 /**
@@ -19,7 +18,7 @@ public class ValidateException extends StatefulException {
 	}
 	
 	public ValidateException(String messageTemplate, Object... params) {
-		super(StrUtil.format(messageTemplate, params));
+		super(StrUtil.templateFormat(messageTemplate, params));
 	}
 
 	public ValidateException(Throwable throwable) {

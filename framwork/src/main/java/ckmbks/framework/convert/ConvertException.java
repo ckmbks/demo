@@ -19,7 +19,7 @@ public class ConvertException extends RuntimeException{
 	}
 	
 	public ConvertException(String messageTemplate, Object... params) {
-		super(StrUtil.format(messageTemplate, params));
+		super(StrUtil.templateFormat(messageTemplate, params));
 	}
 	
 	public ConvertException(String message, Throwable throwable) {
@@ -27,6 +27,6 @@ public class ConvertException extends RuntimeException{
 	}
 	
 	public ConvertException(Throwable throwable, String messageTemplate, Object... params) {
-		super(StrUtil.format(messageTemplate, params), throwable);
+		super(StrUtil.templateFormat(messageTemplate, params), throwable);
 	}
 }

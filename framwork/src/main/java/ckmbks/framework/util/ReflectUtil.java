@@ -20,9 +20,6 @@ import ckmbks.framework.lang.Assert;
 import ckmbks.framework.lang.Filter;
 import ckmbks.framework.lang.SimpleCache;
 import ckmbks.framework.map.MapUtil;
-import ckmbks.framework.util.ArrayUtil;
-import ckmbks.framework.util.ClassUtil;
-import ckmbks.framework.util.StrUtil;
 
 /**
  * 反射工具类
@@ -836,7 +833,7 @@ public class ReflectUtil {
 	public static <T> T invoke(Object obj, String methodName, Object... args) throws UtilException {
 		final Method method = getMethodOfObj(obj, methodName, args);
 		if (null == method) {
-			throw new UtilException(StrUtil.format("No such method: [{}]", methodName));
+			throw new UtilException(StrUtil.templateFormat("No such method: [{}]", methodName));
 		}
 		return invoke(obj, method, args);
 	}

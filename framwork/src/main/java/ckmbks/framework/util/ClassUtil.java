@@ -24,12 +24,6 @@ import ckmbks.framework.lang.Assert;
 import ckmbks.framework.lang.ClassScaner;
 import ckmbks.framework.lang.Filter;
 import ckmbks.framework.lang.Singleton;
-import ckmbks.framework.util.*;
-import ckmbks.framework.util.ArrayUtil;
-import ckmbks.framework.util.CharUtil;
-import ckmbks.framework.util.StrUtil;
-import ckmbks.framework.util.TypeUtil;
-import ckmbks.framework.util.URLUtil;
 
 /**
  * 类工具类 <br>
@@ -451,7 +445,7 @@ public class ClassUtil {
 	 * 路径用/分隔，例如:
 	 * 
 	 * <pre>
-	 * config/a/db.config
+	 * config/a/Db.config
 	 * spring/xml/test.xml
 	 * </pre>
 	 * 
@@ -664,7 +658,7 @@ public class ClassUtil {
 		try {
 			final Method method = getDeclaredMethod(clazz, methodName, getClasses(args));
 			if (null == method) {
-				throw new NoSuchMethodException(ckmbks.framework.util.StrUtil.format("No such method: [{}]", methodName));
+				throw new NoSuchMethodException(ckmbks.framework.util.StrUtil.templateFormat("No such method: [{}]", methodName));
 			}
 			if (isStatic(method)) {
 				return ReflectUtil.invoke(null, method, args);

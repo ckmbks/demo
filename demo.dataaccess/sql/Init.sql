@@ -4,7 +4,7 @@ SET GLOBAL read_only = 0;
 
 SET GLOBAL optimizer_switch = 'derived_merge=off';
 
-CREATE DATABASE happylife DEFAULT CHARSET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci';
+CREATE DATABASE happylife;
 
 /* 创建数据库表 */
 SET SESSION FOREIGN_KEY_CHECKS = 0;

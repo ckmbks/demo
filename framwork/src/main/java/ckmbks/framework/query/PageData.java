@@ -3,10 +3,11 @@ package ckmbks.framework.query;
 import com.github.pagehelper.PageInfo;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class PageData<T> extends PageInfo {
+public class PageData<T> {
     public PageData() {
     }
 
@@ -14,4 +15,8 @@ public class PageData<T> extends PageInfo {
         setList(list);
         setTotal(total);
     }
+
+    long total;
+
+    List<T> list = new ArrayList<T>();
 }

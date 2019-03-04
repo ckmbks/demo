@@ -69,7 +69,7 @@ public class Console {
 	 * @since 3.3.1
 	 */
 	public static void print(String template, Object... values) {
-		out.print(StrUtil.format(template, values));
+		out.print(StrUtil.templateFormat(template, values));
 	}
 
 	/**
@@ -80,7 +80,7 @@ public class Console {
 	 * @param values 值
 	 */
 	public static void log(Throwable t, String template, Object... values) {
-		out.println(StrUtil.format(template, values));
+		out.println(StrUtil.templateFormat(template, values));
 		if (null != t) {
 			t.printStackTrace();
 			out.flush();
@@ -127,7 +127,7 @@ public class Console {
 	 * @param values 值
 	 */
 	public static void error(Throwable t, String template, Object... values) {
-		err.println(StrUtil.format(template, values));
+		err.println(StrUtil.templateFormat(template, values));
 		if (null != t) {
 			t.printStackTrace(err);
 			err.flush();

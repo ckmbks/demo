@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.Comparator;
 
-import ckmbks.framework.comparator.ComparatorException;
-import ckmbks.framework.comparator.CompareUtil;
 import ckmbks.framework.util.ClassUtil;
 import ckmbks.framework.util.ObjectUtil;
 import ckmbks.framework.util.ReflectUtil;
@@ -33,7 +31,7 @@ public class FieldComparator<T> implements Comparator<T>, Serializable {
 	public FieldComparator(Class<T> beanClass, String fieldName) {
 		this.field = ClassUtil.getDeclaredField(beanClass, fieldName);
 		if(this.field == null){
-			throw new IllegalArgumentException(StrUtil.format("Field [{}] not found in Class [{}]", fieldName, beanClass.getName()));
+			throw new IllegalArgumentException(StrUtil.templateFormat("Field [{}] not found in Class [{}]", fieldName, beanClass.getName()));
 		}
 	}
 

@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import ckmbks.framework.bean.BeanUtil;
 import ckmbks.framework.collection.CollUtil;
 import ckmbks.framework.convert.Convert;
 import ckmbks.framework.map.MapUtil;
@@ -237,7 +236,7 @@ public class BeanPath {
 				if (CharUtil.BRACKET_END == c) {
 					// 中括号（数字下标）结束
 					if (false == isNumStart) {
-						throw new IllegalArgumentException(StrUtil.format("Bad expression '{}':{}, we find ']' but no '[' !", expression, i));
+						throw new IllegalArgumentException(StrUtil.templateFormat("Bad expression '{}':{}, we find ']' but no '[' !", expression, i));
 					}
 					isNumStart = false;
 					// 中括号结束加入下标
@@ -248,7 +247,7 @@ public class BeanPath {
 				} else {
 					if (isNumStart) {
 						// 非结束中括号情况下发现起始中括号报错（中括号未关闭）
-						throw new IllegalArgumentException(StrUtil.format("Bad expression '{}':{}, we find '[' but no ']' !", expression, i));
+						throw new IllegalArgumentException(StrUtil.templateFormat("Bad expression '{}':{}, we find '[' but no ']' !", expression, i));
 					} else if (CharUtil.BRACKET_START == c) {
 						// 数字下标开始
 						isNumStart = true;
@@ -267,7 +266,7 @@ public class BeanPath {
 
 		// 末尾边界符检查
 		if (isNumStart) {
-			throw new IllegalArgumentException(StrUtil.format("Bad expression '{}':{}, we find '[' but no ']' !", expression, length - 1));
+			throw new IllegalArgumentException(StrUtil.templateFormat("Bad expression '{}':{}, we find '[' but no ']' !", expression, length - 1));
 		} else {
 			if (builder.length() > 0) {
 				localPatternParts.add(unWrapIfPossible(builder));

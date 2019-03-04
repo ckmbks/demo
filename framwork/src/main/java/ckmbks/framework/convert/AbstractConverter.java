@@ -2,7 +2,6 @@ package ckmbks.framework.convert;
 
 import java.util.Map;
 
-import ckmbks.framework.convert.Converter;
 import ckmbks.framework.util.ArrayUtil;
 import ckmbks.framework.util.CharUtil;
 import ckmbks.framework.util.ClassUtil;
@@ -22,7 +21,7 @@ public abstract class AbstractConverter<T> implements Converter<T> {
 	public T convert(Object value, T defaultValue) {
 		Class<T> targetType = getTargetType();
 		if (null == targetType && null == defaultValue) {
-			throw new NullPointerException(StrUtil.format("[type] and [defaultValue] are both null for Converter [{}], we can not know what type to convert !", this.getClass().getName()));
+			throw new NullPointerException(StrUtil.templateFormat("[type] and [defaultValue] are both null for Converter [{}], we can not know what type to convert !", this.getClass().getName()));
 		}
 		if (null == targetType) {
 			targetType = (Class<T>) defaultValue.getClass();
@@ -44,7 +43,7 @@ public abstract class AbstractConverter<T> implements Converter<T> {
 			}
 			return ((null == result) ? defaultValue : result);
 		} else {
-			throw new IllegalArgumentException(StrUtil.format("Default value [{}] is not the instance of [{}]", defaultValue, targetType));
+			throw new IllegalArgumentException(StrUtil.templateFormat("Default value [{}] is not the instance of [{}]", defaultValue, targetType));
 		}
 	}
 

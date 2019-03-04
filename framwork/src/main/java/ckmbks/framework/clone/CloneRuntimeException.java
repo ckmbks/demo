@@ -19,7 +19,7 @@ public class CloneRuntimeException extends RuntimeException{
 	}
 	
 	public CloneRuntimeException(String messageTemplate, Object... params) {
-		super(StrUtil.format(messageTemplate, params));
+		super(StrUtil.templateFormat(messageTemplate, params));
 	}
 	
 	public CloneRuntimeException(String message, Throwable throwable) {
@@ -27,6 +27,6 @@ public class CloneRuntimeException extends RuntimeException{
 	}
 	
 	public CloneRuntimeException(Throwable throwable, String messageTemplate, Object... params) {
-		super(StrUtil.format(messageTemplate, params), throwable);
+		super(StrUtil.templateFormat(messageTemplate, params), throwable);
 	}
 }

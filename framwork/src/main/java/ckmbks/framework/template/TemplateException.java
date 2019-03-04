@@ -20,7 +20,7 @@ public class TemplateException extends RuntimeException {
 	}
 
 	public TemplateException(String messageTemplate, Object... params) {
-		super(StrUtil.format(messageTemplate, params));
+		super(StrUtil.templateFormat(messageTemplate, params));
 	}
 
 	public TemplateException(String message, Throwable throwable) {
@@ -28,6 +28,6 @@ public class TemplateException extends RuntimeException {
 	}
 
 	public TemplateException(Throwable throwable, String messageTemplate, Object... params) {
-		super(StrUtil.format(messageTemplate, params), throwable);
+		super(StrUtil.templateFormat(messageTemplate, params), throwable);
 	}
 }

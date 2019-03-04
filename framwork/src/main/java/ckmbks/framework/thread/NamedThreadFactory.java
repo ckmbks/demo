@@ -4,7 +4,6 @@ import java.lang.Thread.UncaughtExceptionHandler;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import ckmbks.framework.thread.ThreadUtil;
 import ckmbks.framework.util.StrUtil;
 
 /**
@@ -72,7 +71,7 @@ public class NamedThreadFactory implements ThreadFactory {
 
 	@Override
 	public Thread newThread(Runnable r) {
-		final Thread t = new Thread(this.group, r, StrUtil.format("{}{}", prefix, threadNumber.getAndIncrement()));
+		final Thread t = new Thread(this.group, r, StrUtil.templateFormat("{}{}", prefix, threadNumber.getAndIncrement()));
 		
 		//守护线程
 		if (false == t.isDaemon()) {

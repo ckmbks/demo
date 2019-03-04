@@ -46,8 +46,8 @@ public interface DatePrinter extends DateBasic {
 	 * Formats a millisecond {@code long} value into the supplied {@code Appendable}.
 	 * </p>
 	 *
-	 * @param millis the millisecond value to format
-	 * @param buf the buffer to format into
+	 * @param millis the millisecond value to templateFormat
+	 * @param buf the buffer to templateFormat into
 	 * @param <B> the Appendable class type, usually StringBuilder or StringBuffer.
 	 * @return the specified string buffer
 	 */
@@ -58,8 +58,8 @@ public interface DatePrinter extends DateBasic {
 	 * Formats a {@code Date} object into the supplied {@code Appendable} using a {@code GregorianCalendar}.
 	 * </p>
 	 *
-	 * @param date the date to format
-	 * @param buf the buffer to format into
+	 * @param date the date to templateFormat
+	 * @param buf the buffer to templateFormat into
 	 * @param <B> the Appendable class type, usually StringBuilder or StringBuffer.
 	 * @return the specified string buffer
 	 */
@@ -71,8 +71,8 @@ public interface DatePrinter extends DateBasic {
 	 * </p>
 	 * The TimeZone set on the Calendar is only used to adjust the time offset. The TimeZone specified during the construction of the Parser will determine the TimeZone used in the formatted string.
 	 *
-	 * @param calendar the calendar to format
-	 * @param buf the buffer to format into
+	 * @param calendar the calendar to templateFormat
+	 * @param buf the buffer to templateFormat into
 	 * @param <B> the Appendable class type, usually StringBuilder or StringBuffer.
 	 * @return the specified string buffer
 	 */

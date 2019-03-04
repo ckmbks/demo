@@ -43,11 +43,6 @@ import java.util.zip.CRC32;
 import java.util.zip.Checksum;
 
 import ckmbks.framework.collection.CollUtil;
-import ckmbks.framework.io.BOMInputStream;
-import ckmbks.framework.io.FileTypeUtil;
-import ckmbks.framework.io.IORuntimeException;
-import ckmbks.framework.io.IoUtil;
-import ckmbks.framework.io.LineHandler;
 import ckmbks.framework.io.file.FileCopier;
 import ckmbks.framework.io.file.FileReader;
 import ckmbks.framework.io.file.FileReader.ReaderHandler;
@@ -115,7 +110,7 @@ public class FileUtil {
 		if (file.isDirectory()) {
 			return file.listFiles();
 		}
-		throw new IORuntimeException(StrUtil.format("Path [{}] is not directory!", path));
+		throw new IORuntimeException(StrUtil.templateFormat("Path [{}] is not directory!", path));
 	}
 
 	/**
@@ -288,7 +283,7 @@ public class FileUtil {
 					}
 				}
 			} catch (IOException e) {
-				throw new IORuntimeException(StrUtil.format("Can not read file path of [{}]", path), e);
+				throw new IORuntimeException(StrUtil.templateFormat("Can not read file path of [{}]", path), e);
 			} finally {
 				ckmbks.framework.io.IoUtil.close(jarFile);
 			}
@@ -540,7 +535,7 @@ public class FileUtil {
 	public static long size(File file) {
 		Assert.notNull(file, "file argument is null !");
 		if (false == file.exists()) {
-			throw new IllegalArgumentException(StrUtil.format("File [{}] not exist !", file.getAbsolutePath()));
+			throw new IllegalArgumentException(StrUtil.templateFormat("File [{}] not exist !", file.getAbsolutePath()));
 		}
 
 		if (file.isDirectory()) {
@@ -1037,7 +1032,7 @@ public class FileUtil {
 
 		// 来源为文件夹，目标为文件
 		if (src.isDirectory() && dest.isFile()) {
-			throw new IORuntimeException(StrUtil.format("Can not move directory [{}] to file [{}]", src, dest));
+			throw new IORuntimeException(StrUtil.templateFormat("Can not move directory [{}] to file [{}]", src, dest));
 		}
 
 		if (isOverride && dest.isFile()) {// 只有目标为文件的情况下覆盖之
@@ -1054,7 +1049,7 @@ public class FileUtil {
 			try {
 				copy(src, dest, isOverride);
 			} catch (Exception e) {
-				throw new IORuntimeException(StrUtil.format("Move [{}] to [{}] failed!", src, dest), e);
+				throw new IORuntimeException(StrUtil.templateFormat("Move [{}] to [{}] failed!", src, dest), e);
 			}
 			//复制后删除源
 			del(src);

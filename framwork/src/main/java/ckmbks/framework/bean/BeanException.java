@@ -19,7 +19,7 @@ public class BeanException extends RuntimeException{
 	}
 	
 	public BeanException(String messageTemplate, Object... params) {
-		super(StrUtil.format(messageTemplate, params));
+		super(StrUtil.templateFormat(messageTemplate, params));
 	}
 	
 	public BeanException(String message, Throwable throwable) {
@@ -27,6 +27,6 @@ public class BeanException extends RuntimeException{
 	}
 	
 	public BeanException(Throwable throwable, String messageTemplate, Object... params) {
-		super(StrUtil.format(messageTemplate, params), throwable);
+		super(StrUtil.templateFormat(messageTemplate, params), throwable);
 	}
 }

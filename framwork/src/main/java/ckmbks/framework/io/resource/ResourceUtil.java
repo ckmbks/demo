@@ -94,7 +94,7 @@ public class ResourceUtil {
 	 * 路径用/分隔，例如:
 	 * 
 	 * <pre>
-	 * config/a/db.config
+	 * config/a/Db.config
 	 * spring/xml/test.xml
 	 * </pre>
 	 * 

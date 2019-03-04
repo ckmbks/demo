@@ -144,7 +144,7 @@ public class NumberConverter extends AbstractConverter<Number> {
 			return StrUtil.isBlank(valueStr) ? null : NumberUtil.parseNumber(valueStr);
 		}
 
-		throw new UnsupportedOperationException(StrUtil.format("Unsupport Number type: {}", this.targetType.getName()));
+		throw new UnsupportedOperationException(StrUtil.templateFormat("Unsupport Number type: {}", this.targetType.getName()));
 	}
 
 	/**

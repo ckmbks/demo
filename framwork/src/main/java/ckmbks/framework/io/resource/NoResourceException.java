@@ -22,7 +22,7 @@ public class NoResourceException extends IORuntimeException {
 	}
 
 	public NoResourceException(String messageTemplate, Object... params) {
-		super(StrUtil.format(messageTemplate, params));
+		super(StrUtil.templateFormat(messageTemplate, params));
 	}
 
 	public NoResourceException(String message, Throwable throwable) {
@@ -30,7 +30,7 @@ public class NoResourceException extends IORuntimeException {
 	}
 
 	public NoResourceException(Throwable throwable, String messageTemplate, Object... params) {
-		super(StrUtil.format(messageTemplate, params), throwable);
+		super(StrUtil.templateFormat(messageTemplate, params), throwable);
 	}
 
 	/**

@@ -294,7 +294,7 @@ class FastDatePrinter extends AbstractDateBasic implements DatePrinter {
 	 * Formats a {@code Date}, {@code Calendar} or {@code Long} (milliseconds) object.
 	 * </p>
 	 * 
-	 * @param obj the object to format
+	 * @param obj the object to templateFormat
 	 * @return The formatted value.
 	 */
 	String format(final Object obj) {
@@ -367,8 +367,8 @@ class FastDatePrinter extends AbstractDateBasic implements DatePrinter {
 	 * Performs the formatting by applying the rules to the specified calendar.
 	 * </p>
 	 *
-	 * @param calendar the calendar to format
-	 * @param buf the buffer to format into
+	 * @param calendar the calendar to templateFormat
+	 * @param buf the buffer to templateFormat into
 	 * @param <B> the Appendable class type, usually StringBuilder or StringBuffer.
 	 * @return the specified string buffer
 	 */
@@ -1207,7 +1207,7 @@ class FastDatePrinter extends AbstractDateBasic implements DatePrinter {
 		 * Factory method for Iso8601_Rules.
 		 *
 		 * @param tokenLen a token indicating the length of the TimeZone String to be formatted.
-		 * @return a Iso8601_Rule that can format TimeZone String of length {@code tokenLen}. If no such rule exists, an IllegalArgumentException will be thrown.
+		 * @return a Iso8601_Rule that can templateFormat TimeZone String of length {@code tokenLen}. If no such rule exists, an IllegalArgumentException will be thrown.
 		 */
 		static Iso8601_Rule getRule(final int tokenLen) {
 			switch (tokenLen) {

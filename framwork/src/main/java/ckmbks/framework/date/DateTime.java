@@ -8,11 +8,6 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import ckmbks.framework.date.*;
-import ckmbks.framework.date.Month;
-import ckmbks.framework.date.Quarter;
-import ckmbks.framework.date.Season;
-import ckmbks.framework.date.Week;
 import ckmbks.framework.date.format.DateParser;
 import ckmbks.framework.date.format.DatePrinter;
 import ckmbks.framework.date.format.FastDateFormat;
@@ -887,7 +882,7 @@ public class DateTime extends Date {
 			} else {
 				pattern = dateFormat.toString();
 			}
-			throw new DateException(StrUtil.format("Parse [{}] with format [{}] error!", dateStr, pattern), e);
+			throw new DateException(StrUtil.templateFormat("Parse [{}] with templateFormat [{}] error!", dateStr, pattern), e);
 		}
 	}
 
@@ -904,7 +899,7 @@ public class DateTime extends Date {
 		try {
 			return parser.parse(dateStr);
 		} catch (Exception e) {
-			throw new DateException("Parse [{}] with format [{}] error!", dateStr, parser.getPattern(), e);
+			throw new DateException("Parse [{}] with templateFormat [{}] error!", dateStr, parser.getPattern(), e);
 		}
 	}
 

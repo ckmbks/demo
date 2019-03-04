@@ -12,11 +12,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface UserDtoRepository{
-    default PageData<UserDto> getPage(QueryParams params) {
-        PageHelper.startPage(params.getPageIndex(), params.getPageSize(),params.getOrder());
-        var list = getPage(params.getWhere());
-        return new PageData(list, ((Page) list).getTotal());
-
-    }
+//    default PageData<UserDto> getPage(QueryParams params) {
+//        PageHelper.startPage(params.getPageIndex(), params.getPageSize(),params.getOrder());
+//        var list = getPage(params.getWhere());
+//        return new PageData(list, ((Page) list).getTotal());
+//
+//    }
 
 }

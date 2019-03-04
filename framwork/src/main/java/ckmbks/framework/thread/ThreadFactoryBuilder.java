@@ -81,10 +81,10 @@ public class ThreadFactoryBuilder implements Builder<ThreadFactory>{
 	 */
 	public ThreadFactoryBuilder setPriority(int priority) {
 		if (priority < Thread.MIN_PRIORITY) {
-			throw new IllegalArgumentException(StrUtil.format("Thread priority ({}) must be >= {}", priority, Thread.MIN_PRIORITY));
+			throw new IllegalArgumentException(StrUtil.templateFormat("Thread priority ({}) must be >= {}", priority, Thread.MIN_PRIORITY));
 		}
 		if (priority > Thread.MAX_PRIORITY) {
-			throw new IllegalArgumentException(StrUtil.format("Thread priority ({}) must be <= {}", priority, Thread.MAX_PRIORITY));
+			throw new IllegalArgumentException(StrUtil.templateFormat("Thread priority ({}) must be <= {}", priority, Thread.MAX_PRIORITY));
 		}
 		this.priority = priority;
 		return this;
