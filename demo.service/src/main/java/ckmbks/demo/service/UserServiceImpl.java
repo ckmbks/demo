@@ -8,13 +8,18 @@ import ckmbks.demo.domain.user.repository.UserLoginTokenRepository;
 import ckmbks.demo.domain.user.repository.UserRepository;
 import ckmbks.framework.exceptions.AlertException;
 import ckmbks.framework.query.PageData;
-import ckmbks.demo.dataaccess.UserDtoMapper;
 import ckmbks.framework.query.QueryParams;
 import lombok.var;
+import org.hibernate.query.NativeQuery;
+import org.hibernate.query.internal.NativeQueryImpl;
+import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.text.MessageFormat;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -24,8 +29,11 @@ public class UserServiceImpl implements UserService {
     @Autowired
     public UserLoginTokenRepository UserLoginTokenRepository;
 
-    @Autowired
-    public UserDtoMapper UserDtoMapper;
+    @PersistenceContext
+    public javax.persistence.EntityManager EntityManager;
+//
+//    @Autowired
+//    public UserDtoMapper UserDtoMapper;
 
     @Autowired
     private ckmbks.framework.query.Db Db;
@@ -56,7 +64,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public PageData<UserDto> getPage(QueryParams params) {
-        return Db.getPageData(UserDto.class,"user.getPage", params);
+//        var sql = "SELECT new ckmbks.demo.domain.user.dto.UserDto(u.id,u.userName,u.phone,u.userType,u.sex,u.createTime,u.createUser,u.weight,'admin') from User u";
+//        var query = EntityManager.createQuery("SELECT new ckmbks.demo.domain.user.dto.UserDto(u.id,u.userName,u.phone,u.userType,u.sex,u.createTime,u.createUser,u.weight,'admin') from User u");
+//        List result = query.query();
+//
+//        EntityManager.close();
+//        var page = new PageData<UserDto>();
+//        page.setList(result);
+//        return page;
+        return Db.getPageData("user.getPage", params, UserDto.class);
 
 //分页时，实际返回的结果list类型是Page<E>，如果想取出分页信息，需要强制转换为Page<E>
 //        return new PageData(list,((Page) list).getTotal());

@@ -1,107 +1,149 @@
 <template>
-  <div class="app-container">
+  <page-table>
+    <template slot="search">
+      <div class="filter-container">
+        <el-input placeholder="用户名" v-model="listQuery.userName" style="width: 200px;" class="filter-item"
+                  @keyup.enter.native="handleFilter"/>
+        <!--<el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="search">搜索</el-button>-->
 
-    <el-table v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%">
-      <el-table-column align="center" label="ID" width="80">
+        <!--<el-select v-model="listQuery.importance" :placeholder="$t('table.importance')" clearable style="width: 90px"-->
+        <!--class="filter-item">-->
+        <!--<el-option v-for="item in importanceOptions" :key="item" :label="item" :value="item"/>-->
+        <!--</el-select>-->
+        <!--<el-select v-model="listQuery.type" :placeholder="$t('table.type')" clearable class="filter-item"-->
+        <!--style="width: 130px">-->
+        <!--<el-option v-for="item in calendarTypeOptions" :key="item.key" :label="item.display_name+'('+item.key+')'"-->
+        <!--:value="item.key"/>-->
+        <!--</el-select>-->
+        <!--<el-select v-model="listQuery.sort" style="width: 140px" class="filter-item" @change="handleFilter">-->
+        <!--<el-option v-for="item in sortOptions" :key="item.key" :label="item.label" :value="item.key"/>-->
+        <!--</el-select>-->
+        <!--<el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">{{-->
+        <!--$t('table.search') }}-->
+        <!--</el-button>-->
+        <!--<el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit"-->
+        <!--@click="handleCreate">{{ $t('table.add') }}-->
+        <!--</el-button>-->
+        <!--<el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download"-->
+        <!--@click="handleDownload">{{ $t('table.export') }}-->
+        <!--</el-button>-->
+        <!--<el-checkbox v-model="showReviewer" class="filter-item" style="margin-left:15px;" @change="tableKey=tableKey+1">-->
+        <!--{{-->
+        <!--$t('table.reviewer') }}-->
+        <!--</el-checkbox>-->
+      </div>
+    </template>
+    <template slot="table">
+      <el-table-column align="center" label="ID" min-width="80">
         <template slot-scope="scope">
           <span>{{ scope.row.id }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column width="180px" align="center" label="Date">
+      <el-table-column min-width="180px" align="center" label="用户名">
         <template slot-scope="scope">
-          <span>{{ scope.row.timestamp }}</span>
+          <span>{{ scope.row.userName }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column width="120px" align="center" label="Author">
+      <el-table-column min-width="120px" align="center" label="电话">
         <template slot-scope="scope">
-          <span>{{ scope.row.author }}</span>
+          <span>{{ scope.row.phone }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column min-width="300px" label="Title">
+      <el-table-column min-width="120px" align="center" label="性别">
         <template slot-scope="scope">
-
-          <router-link :to="'/example/edit/'+scope.row.id" class="link-type">
-            <span>{{ scope.row.title }}</span>
-          </router-link>
+          <span>{{ scope.row.sex }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column align="center" label="Actions" width="120">
+      <el-table-column min-width="120px" align="center" label="体重">
+        <template slot-scope="scope">
+          <span>{{ scope.row.weight }}</span>
+        </template>
+      </el-table-column>
+
+      <el-table-column min-width="120px" align="center" label="用户类型">
+        <template slot-scope="scope">
+          <span>{{ scope.row.userType }}</span>
+        </template>
+      </el-table-column>
+
+      <el-table-column min-width="120px" align="center" label="添加时间">
+        <template slot-scope="scope">
+          <span>{{ scope.row.createTime }}</span>
+        </template>
+      </el-table-column>
+
+      <el-table-column min-width="120px" align="center" label="添加人">
+        <template slot-scope="scope">
+          <span>{{ scope.row.createUser }}</span>
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="Actions" min-width="120">
         <template slot-scope="scope">
           <router-link :to="'/example/edit/'+scope.row.id">
             <el-button type="primary" size="small" icon="el-icon-edit">Edit</el-button>
           </router-link>
         </template>
       </el-table-column>
-    </el-table>
-
-    <pagination v-show="total>0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit" @pagination="getList" />
-
-  </div>
+    </template>
+  </page-table>
 </template>
-
 <script>
-import { getUserPage } from '@/api/login'
-import Pagination from '@/components/Pagination' // Secondary package based on el-pagination
+  import {getUserPage} from '@/api/login'
+  import PageTable from '@/components/Table/PageTable';
+  import BasePage from '@/components/Table/BasePage';
 
-export default {
-  name: 'UserList',
-  components: { Pagination },
-  filters: {
-    statusFilter(status) {
-      const statusMap = {
-        published: 'success',
-        draft: 'info',
-        deleted: 'danger'
+  BasePage.methods.getPage = function () {
+    return getUserPage(this.listQuery);
+  }
+
+  export default {
+    name: 'UserList',
+    components: {PageTable},
+    extends: BasePage,
+    filters: {
+      statusFilter(status) {
+        const statusMap = {
+          published: 'success',
+          draft: 'info',
+          deleted: 'danger'
+        }
+        return statusMap[status]
       }
-      return statusMap[status]
-    }
-  },
-  data() {
-    return {
-      list: null,
-      total: 0,
-      listLoading: true,
-      listQuery: {
-        page: 1,
-        limit: 20
+    },
+    data() {
+      return {
+        tableKey: 0,
+        list: null,
+        total: 0,
+        listLoading: true,
+        listQuery: {
+          page: 1,
+          limit: 20,
+          importance: undefined,
+          userName: undefined,
+          type: undefined,
+          sort: '+id'
+        },
+        rules: {
+          type: [{ required: true, message: 'type is required', trigger: 'change' }],
+          timestamp: [{ type: 'date', required: true, message: 'timestamp is required', trigger: 'change' }],
+          title: [{ required: true, message: 'title is required', trigger: 'blur' }]
+        },
       }
-    }
-  },
-  created() {
-    this.getList()
-  },
-  methods: {
-    getList() {
-      this.listLoading = true
-      getUserPage(this.listQuery).then(response => {
-        this.list = response.data.list
-        this.total = response.data.total
-        this.listLoading = false
-      })
     },
-    handleSizeChange(val) {
-      this.listQuery.limit = val
-      this.getList()
+    created() {
+      this.search()
     },
-    handleCurrentChange(val) {
-      this.listQuery.page = val
-      this.getList()
+    methods: {
+      search() {
+        this.listQuery.page = 1
+        this.refresh()
+      }
     }
   }
-}
 </script>
-
-<style scoped>
-  .edit-input {
-    padding-right: 100px;
-  }
-  .cancel-btn {
-    position: absolute;
-    right: 15px;
-    top: 10px;
-  }
-</style>

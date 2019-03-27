@@ -3,17 +3,32 @@ package ckmbks.demo.domain.user.dto;
 import ckmbks.demo.domain.user.User;
 import ckmbks.demo.domain.user.enums.Sex;
 import ckmbks.demo.domain.user.enums.UserType;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Id;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Data
-public class UserDto  {
-    public UserDto() {
+@NoArgsConstructor
+public class UserDto {
+    public UserDto(long id, String userName, String phone, UserType userType, Sex sex, Date createTime, String createUser,BigDecimal weight, String roles) {
+        this();
+        this.id = id;
+        this.userName = userName;
+        this.phone = phone;
+        this.userType = userType;
+        this.sex = sex;
+        this.createTime = createTime;
+        this.createUser = createUser;
+        this.weight = weight;
+        this.roles = new ArrayList<String>();
+        this.roles.add(roles);
     }
 
     public UserDto(User user) {
@@ -25,8 +40,9 @@ public class UserDto  {
         sex = user.getSex();
         createTime = user.getCreateTime();
         createUser = user.getCreateUser();
-        roles = user.getRoles().stream().map(role->role.getName()).collect(Collectors.toList());
+        roles = user.getRoles().stream().map(role -> role.getName()).collect(Collectors.toList());
     }
+
     @Id
     private long id;
 

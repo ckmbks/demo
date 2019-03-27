@@ -4,20 +4,25 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>ckmbks</groupId>
-        <artifactId>ckmbks-demo-domain</artifactId>
-        <version>1.0.0</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <artifactId>ckmbks-demo-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../demo.parent</relativePath> <!-- lookup parent from repository -->
     </parent>
     <groupId>ckmbks</groupId>
     <artifactId>ckmbks-demo-apiserver</artifactId>
-    <version>${ckmbks.demo.version}</version>
+    <version>1.0.0</version>
     <name>ckmbks-demo-apiserver</name>
     <description>Demo project for Spring Boot</description>
-
+    <packaging>war</packaging>
     <properties>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>ckmbks</groupId>
+            <artifactId>ckmbks-framework</artifactId>
+            <version>${ckmbks.framework.version}</version>
+        </dependency>
         <dependency>
             <groupId>ckmbks</groupId>
             <artifactId>ckmbks-demo-service</artifactId>
@@ -40,8 +45,27 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <dependencies>
+                    <!-- spring热部署 -->
+                    <dependency>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>springloaded</artifactId>
+                    </dependency>
+                </dependencies>
+              <configuration>
+                    <mainClass>ckmbks.demo.apiserver.DemoApiserverApplication</mainClass>
+                </configuration>
             </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.apache.tomcat.maven</groupId>-->
+                <!--<artifactId>tomcat7-maven-plugin</artifactId>-->
+                <!--<version>2.2</version>-->
+                <!--<configuration>-->
+                    <!--<port>7001</port>-->
+                    <!--<path>/</path>-->
+                    <!--<uriEncoding>utf-8</uriEncoding>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
         </plugins>
     </build>
-
 </project>

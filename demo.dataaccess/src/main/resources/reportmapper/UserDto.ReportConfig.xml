@@ -2,34 +2,54 @@
 <mapper name="user.getPage" desc="获取人员列表">
     <reportSql>
         SELECT
-        *
-        FROM user u
-        @where
+        u.id,
+        u.user_name,
+        u.phone,
+        u.sex,
+        u.user_type,
+        u.create_user,
+        u.create_time,
+        u.weight,
+        temp.roles
+        FROM
+        USER u
+        JOIN (
+        SELECT
+        u2.id,
+        GROUP_CONCAT(r. NAME) roles
+        FROM
+        USER u2
+        JOIN user_role ur ON u2.id = ur.user_id
+        JOIN role r ON r.id = ur.role_id
+        GROUP BY
+        u2.id
+        ) temp ON u.id = temp.id
+        :where
     </reportSql>
     <totalSql>
-        SELECT COUNT(0)
+        SELECT COUNT(*)
         FROM user u
-        @where
+        :where
     </totalSql>
     <orderSql>
         ORDER BY u.name DESC
     </orderSql>
     <paramGroup name="where">
-        <param name="userId">
-            u.id=@userId
+        <param name="userId" type="">
+            u.id=:userId
         </param>
-        <param name="sex">
-            find_in_set(sex,@sex)
+        <param name="sex" type="">
+            find_in_set(sex,:sex)
         </param>
-        <param name="userName">
-            u.user_name LIKE (%@userName%)
+        <param name="userName" type="like">
+            u.user_name like :userName
         </param>
-        <param name="beginTime">
-            u.add_time>=@beginTime
+        <param name="beginTime" type="">
+            u.create_time>=:beginTime
         </param>
-        <param name="endTime">
+        <param name="endTime" type="">
             <![CDATA[
-            u.add_time<=@endTime
+            u.create_time<=:endTime
             ]]>
         </param>
     </paramGroup>

@@ -13,10 +13,10 @@ public class ApiResponse {
         setErrorMessage(e.getMessage());
     }
 
-    private String errorMessage;
+    private boolean isSuccess = true;
 
     private Object data;
 
-    private boolean isSuccess = true;
+    private String errorMessage;
 
 }

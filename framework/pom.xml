@@ -9,20 +9,15 @@
         <relativePath>../demo.parent</relativePath> <!-- lookup parent from repository -->
     </parent>
     <groupId>ckmbks</groupId>
-    <artifactId>ckmbks-demo-domain</artifactId>
-    <version>1.0.0</version>
-    <name>ckmbks-demo-domain</name>
+    <artifactId>ckmbks-framework</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>ckmbks-framework</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
+        <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>ckmbks</groupId>
-            <artifactId>ckmbks-framework</artifactId>
-            <version>${ckmbks.framework.version}</version>
-        </dependency>
     </dependencies>
-
 </project>
