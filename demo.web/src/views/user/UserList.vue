@@ -1,10 +1,12 @@
 <template>
-  <page-table>
+  <page-table ref="pageTable">
     <template slot="search">
       <div class="filter-container">
         <el-input placeholder="用户名" v-model="listQuery.userName" style="width: 200px;" class="filter-item"
                   @keyup.enter.native="handleFilter"/>
-        <!--<el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="search">搜索</el-button>-->
+        <el-button v-waves class="filter-item" type="primary" icon="el-icon-search"
+                   @click="dosearch">搜索
+        </el-button>
 
         <!--<el-select v-model="listQuery.importance" :placeholder="$t('table.importance')" clearable style="width: 90px"-->
         <!--class="filter-item">-->
@@ -96,15 +98,17 @@
   import {getUserPage} from '@/api/login'
   import PageTable from '@/components/Table/PageTable';
   import BasePage from '@/components/Table/BasePage';
+  import waves from '@/directive/waves' // Waves directive
 
-  BasePage.methods.getPage = function () {
+  PageTable.methods.getPage = function () {
     return getUserPage(this.listQuery);
   }
 
   export default {
     name: 'UserList',
     components: {PageTable},
-    extends: BasePage,
+    // extends: BasePage,
+    directives: { waves },
     filters: {
       statusFilter(status) {
         const statusMap = {
@@ -130,19 +134,15 @@
           sort: '+id'
         },
         rules: {
-          type: [{ required: true, message: 'type is required', trigger: 'change' }],
-          timestamp: [{ type: 'date', required: true, message: 'timestamp is required', trigger: 'change' }],
-          title: [{ required: true, message: 'title is required', trigger: 'blur' }]
+          type: [{required: true, message: 'type is required', trigger: 'change'}],
+          timestamp: [{type: 'date', required: true, message: 'timestamp is required', trigger: 'change'}],
+          title: [{required: true, message: 'title is required', trigger: 'blur'}]
         },
       }
     },
-    created() {
-      this.search()
-    },
     methods: {
-      search() {
-        this.listQuery.page = 1
-        this.refresh()
+      dosearch() {
+        this.$refs.pageTable.search()
       }
     }
   }

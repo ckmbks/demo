@@ -13,6 +13,9 @@
         }
       }
     },
+    created() {
+      this.search()
+    },
     methods: {
       refresh() {
         this.listLoading = true
